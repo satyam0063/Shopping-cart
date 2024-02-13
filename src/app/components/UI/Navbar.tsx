@@ -37,7 +37,7 @@ const Navbar = () => {
         {navArray &&
           navArray.map((nav: any, i: any) => (
             <li key={`nav_${i}`}>
-              <Link href={nav.url} className="py-4 px-4 uppercase text-white">
+              <Link href={nav.url} className="py-4 px-4 uppercase text-[#fefefe]">
                 {nav.urlName}
               </Link>
             </li>
