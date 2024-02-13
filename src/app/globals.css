@@ -127,3 +127,70 @@ a {
 .menu-pop-up-container div:nth-child(3) ul li {
   display: block !important;
 }
+::selection {
+  background: #54595f;
+}
+.astra-mobile-cart-overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.astra-mobile-cart-overlay.active {
+  opacity: 1;
+  cursor: pointer;
+  visibility: visible;
+  z-index: 999;
+}
+.astra-cart-drawer {
+  position: fixed;
+  display: block;
+  visibility: hidden;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 10000000;
+  background-color: var(--ast-global-color-5);
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  will-change: transform;
+  transition: 0.25s ease;
+  height: 100%;
+  left: 100%;
+  top: 0px;
+}
+.astra-cart-drawer.active {
+  opacity: 1;
+  background-color: #fefefe;
+  border: 1px solid #dddddd;
+  width: 35%;
+  transform: translate3d(-100%, 0, 0);
+  visibility: visible;
+}
+.astra-cart-drawer-title {
+  position: absolute;
+  width: 100%;
+  text-align: left;
+  text-transform: inherit;
+  font-weight: 500;
+  border-bottom: 1px solid #dddddd;
+  padding: 1.34em;
+  line-height: 1;
+  z-index: 1;
+  max-height: 3.5em;
+}
+.cart-cross-button {
+  position: absolute;
+  z-index: 100000;
+  top: 0.3em;
+  right: 0;
+  border: none;
+  margin: 0;
+  padding: 0.6em 1em 0.4em;
+  color: #000;
+  background-color: transparent;
+}
