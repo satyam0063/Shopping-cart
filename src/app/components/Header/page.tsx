@@ -8,6 +8,7 @@ import MenuTwoToneIcon from "@mui/icons-material/MenuTwoTone";
 
 const Header = () => {
   const menuList = ["home", "users", "about"];
+  
 
   return (
     <div className="flex flex-row justify-between items-center h-16 px-10 bg-lime-300">
