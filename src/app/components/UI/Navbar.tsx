@@ -48,9 +48,9 @@ const Navbar = () => {
         <button
           onClick={toggleMenu}
           type="button"
-          className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:bg-gray-200 focus:outline-none focus:bg-gray-200"
+          className="inline-flex items-center justify-center p-2 rounded-md text-white"
         >
-          <Bars3Icon className="h-6 w-6" />
+          <Bars3Icon className="h-8 w-8" />
         </button>
 
         {/* Dropdown Menu */}
