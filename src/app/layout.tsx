@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} ${barlowCondensed.variable}`}>
+      <body className={`${roboto.className} ${barlowCondensed.variable} selection:bg-[#54595f]`}>
         <>
           {children}
         </>
