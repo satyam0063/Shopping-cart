@@ -20,7 +20,7 @@ const WithBglayout = ({
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change image every 3 seconds
+    }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -37,7 +37,7 @@ const WithBglayout = ({
         <div className="absolute inset-0 bg-gradient-to-b from-[#4f4f4f] to-[#272c41] opacity-80 transition-all duration-300"></div>
         <Header />
       </div>
-      <div className="w-full inline-flex">{children}</div>
+      <div className="w-full">{children}</div>
     </>
   );
 };

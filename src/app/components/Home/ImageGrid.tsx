@@ -6,8 +6,8 @@ import CommonButtons from "../UI/CommonButtons";
 const ImageGrid = () => {
   return (
     <>
-      <div className="flex lg:flex-nowrap flex-wrap h-750 py-2 px-6">
-        <div className="w-1/2 m-3 rounded-2xl bg-[url('/static/images/home/new-collection-1.jpg')] bg-hero bg-no-repeat bg-cover bg-center flex items-end justify-center relative">
+      <div className="flex lg:flex-nowrap flex-wrap min-h-[750px] py-2 px-6">
+        <div className="w-full md:w-1/2 m-3 rounded-2xl bg-[url('/static/images/home/new-collection-1.jpg')] bg-hero bg-no-repeat bg-cover bg-center flex items-end justify-center relative">
           <div className="rounded-2xl absolute top-0 left-0 h-full w-full bg-transparent bg-gradient-to-b from-transparent to-[#e36262] opacity-75"></div>
           <div className="mb-24 relative">
             <h2 className="text-neutral-100 font-sans ">
@@ -15,9 +15,9 @@ const ImageGrid = () => {
             </h2>
           </div>
         </div>
-        <div className="w-1/2 flex flex-col">
-          <div className="h-1/2 flex lg:flex-nowrap flex-wrap">
-            <div className="w-1/2 m-3 rounded-2xl bg-[url('/static/images/home/men-collection.jpg')] bg-hero bg-no-repeat bg-cover bg-center flex items-end justify-center relative ">
+        <div className="w-full md:w-1/2 flex flex-col">
+          <div className="h-full md:h-1/2 flex lg:flex-nowrap flex-wrap">
+            <div className="w-full md:w-1/2 m-3 rounded-2xl bg-[url('/static/images/home/men-collection.jpg')] bg-hero bg-no-repeat bg-cover bg-center flex items-end justify-center relative ">
               <div className="rounded-2xl absolute top-0 left-0 h-full w-full bg-transparent bg-gradient-to-b from-transparent to-[#e36262] opacity-75"></div>
               <div className="mb-16 ml-10 relative">
                 <h2 className="text-neutral-100 font-sans ">
@@ -27,7 +27,7 @@ const ImageGrid = () => {
                 </h2>
               </div>
             </div>
-            <div className="w-1/2 m-3 rounded-2xl bg-[url('/static/images/home/women-collection-1.jpg')] bg-hero bg-no-repeat bg-cover bg-center flex items-end justify-center relative">
+            <div className="w-full md:w-1/2 m-3 rounded-2xl bg-[url('/static/images/home/women-collection-1.jpg')] bg-hero bg-no-repeat bg-cover bg-center flex items-end justify-center relative">
               <div className="rounded-2xl absolute top-0 left-0 h-full w-full bg-transparent bg-gradient-to-b from-transparent to-[#e36262] opacity-75"></div>
               <div className="mb-16 ml-10 relative">
                 <h2 className="text-neutral-100 font-sans ">
