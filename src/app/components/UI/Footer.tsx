@@ -28,7 +28,7 @@ const navArray = [
 const Footer = () => {
   return (
     <>
-      <div className="w-full flex flex-col sm:flex-row sm:flex-wrap px-20 py-20 bg-black text-white">
+      <div className="w-full flex flex-col sm:flex-row flex-wrap md:flex-nowrap px-20 py-20 bg-black text-white">
         <div className="w-full sm:w-1/4 flex flex-col px-5">
           <Image
             src="/static/images/home/site-logo-white-free-img.png"
@@ -122,7 +122,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="w-full flex flex-col sm:flex-row items-center sm:justify-between px-20 py-10 bg-white text-black">
-        <div className="py-1 sm:py-0">Copyright © 2024 Brandstore Pro</div>
+        <div className="py-1 sm:py-0 text-[#4f4f4f]">Copyright © 2024 Brandstore Pro</div>
         <ul className="py-1 sm:py-0 flex flex-row">
           <li className="px-1">
             <Link href='/'>Facebook</Link>
@@ -137,7 +137,7 @@ const Footer = () => {
             <Link href='/'>Insta</Link>
           </li>
         </ul>
-        <div className="py-1 sm:py-0">Powered by Brandstore Pro</div>
+        <div className="py-1 sm:py-0 text-[#4f4f4f]">Powered by Brandstore Pro</div>
       </div>
     </>
   );
