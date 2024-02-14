@@ -33,7 +33,7 @@ const OfferSection = () => {
             </div>
             <div>
               <div className="mt-5">
-                <CommonButtons />
+                <CommonButtons name={'Grab this offer'} textColor={"fefefe"} bgColor={"54595f"} hoverBgClr={"000"} />
               </div>
             </div>
           </div>

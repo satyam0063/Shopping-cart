@@ -1,13 +1,27 @@
 import React from "react";
 
-const CommonButtons = () => {
+const CommonButtons = ({
+  name,
+  textColor,
+  bgColor,
+  hoverBgClr,
+}: {
+  name: string;
+  textColor: string;
+  bgColor: string;
+  hoverBgClr: string;
+}) => {
   return (
     <>
       <button
         type="button"
-        className="text-[#4f4f4f] bg-[#fefefe] rounded-md px-9 py-4 mt-3 tracking-widest uppercase text-sm font-semibold hover:bg-[#f5f5f5] hover:translate-y-[-8px] transition-transform duration-300 ease-out text"
+        className={`text-[#${textColor ?? "4f4f4f"}] bg-[#${
+          bgColor ?? "fefefe"
+        }] rounded-md px-9 py-4 mt-3 tracking-widest uppercase text-sm font-semibold hover:bg-[#${
+          hoverBgClr ?? "f5f5f5"
+        }] hover:translate-y-[-8px] transition-transform duration-300 ease-out text`}
       >
-        View Collection
+        {name ?? "View Collection"}
       </button>
     </>
   );

@@ -46,7 +46,7 @@ const ImageGrid = () => {
                 <div className="text-2xl leading-loose">
                   On All Orders Above $299
                 </div>
-                <CommonButtons />
+                <CommonButtons name={"View Collection"} textColor={"4f4f4f"} bgColor={"fefefe"} hoverBgClr={"f5f5f5"} />
               </h2>
             </div>
           </div>

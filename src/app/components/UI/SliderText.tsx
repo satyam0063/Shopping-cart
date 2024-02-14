@@ -12,7 +12,7 @@ const SliderText = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
           tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
         </div>
-        <CommonButtons />
+        <CommonButtons name={"View Collection"} textColor={"4f4f4f"} bgColor={"fefefe"} hoverBgClr={"f5f5f5"} />
       </div>
     </div>
   );
