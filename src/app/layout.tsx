@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Roboto} from "next/font/google";
+import { Inter, Roboto, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import "./responsive.css";
 
@@ -8,6 +8,13 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["100", "300", "400", "500", "700", "900"]
 });
+
+	
+const barlowCondensed = Barlow_Condensed({
+  weight: ["100", "300", "400", "500", "700", "900"],
+  subsets: ['latin'],
+  variable: '--font-barlow-condensed',	
+  });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={`${roboto.className} ${barlowCondensed.variable}`}>
         <>
           {children}
         </>

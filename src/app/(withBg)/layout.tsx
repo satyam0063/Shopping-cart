@@ -2,6 +2,7 @@
 import React, {useState, useEffect } from "react";
 import Image from "next/image";
 import Header from "../components/UI/Header";
+import SliderText from "../components/UI/SliderText";
 
 const images = [
   '/static/images/home/home-slider1.jpg',
@@ -36,6 +37,7 @@ const WithBglayout = ({
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#4f4f4f] to-[#272c41] opacity-80 transition-all duration-300"></div>
         <Header />
+        <SliderText />
       </div>
       <div className="w-full inline-flex">{children}</div>
     </>
