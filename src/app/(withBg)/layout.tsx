@@ -21,7 +21,7 @@ const WithBglayout = ({
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000); // Change image every 3 seconds
+    }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval);
   }, []);
@@ -39,7 +39,7 @@ const WithBglayout = ({
         <Header />
         <SliderText />
       </div>
-      <div className="w-full inline-flex">{children}</div>
+      <div className="w-full">{children}</div>
     </>
   );
 };
