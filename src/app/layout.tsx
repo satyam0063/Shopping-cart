@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Roboto, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import "./responsive.css";
-import './fontawesome.css'
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({

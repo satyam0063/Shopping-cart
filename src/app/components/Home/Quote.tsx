@@ -2,7 +2,7 @@ import React from "react";
 
 const Quote = () => {
   return (
-    <div className="pt-[70px] pb-[100px] ">
+    <div className="pt-[70px] pb-[100px] px-3 lg:px-0">
       <div className="max-w-[1200px] mr-auto ml-auto">
         <div className="flex flex-col mr-0 lg:mr-[40%]">
           <div className="text-[40px] mb-5">
