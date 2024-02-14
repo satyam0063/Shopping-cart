@@ -3,6 +3,7 @@ import React, {useState, useEffect } from "react";
 import Image from "next/image";
 import Header from "../components/UI/Header";
 import SliderText from "../components/UI/SliderText";
+import Footer from "../components/UI/Footer";
 
 const images = [
   '/static/images/home/home-slider1.jpg',
@@ -40,6 +41,7 @@ const WithBglayout = ({
         <SliderText />
       </div>
       <div className="w-full">{children}</div>
+      <Footer />
     </>
   );
 };
