@@ -29,13 +29,13 @@ const RatingBar = () => {
   };
 
   return (
-    <div className="flex items-center">
-      <div className="w-20 mr-3">Rating:</div>
+    <>
+      {/* <div className="w-20 mr-3">Rating:</div> */}
       <div className="flex">
         {renderStars()}
       </div>
-      <div className="ml-2">{rating}/5</div>
-    </div>
+      {/* <div className="ml-2">{rating}/5</div> */}
+    </>
   );
 };
 
