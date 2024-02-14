@@ -25,7 +25,7 @@ const navArray = [
     url: "/contact-us",
   },
 ];
-const Navbar = () => {
+const Navbar = (props: any) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -37,7 +37,7 @@ const Navbar = () => {
         {navArray &&
           navArray.map((nav: any, i: any) => (
             <li key={`nav_${i}`}>
-              <Link href={nav.url} className="py-4 px-4 uppercase text-[#fefefe]">
+              <Link href={nav.url} className={`py-4 px-4 uppercase ${props.updateColor ? 'text-[#54595f] hover:text-black' : 'text-[#fefefe] hover:text-white'}`}>
                 {nav.urlName}
               </Link>
             </li>
@@ -48,7 +48,7 @@ const Navbar = () => {
         <button
           onClick={toggleMenu}
           type="button"
-          className="inline-flex items-center justify-center p-2 rounded-md text-white"
+          className={`inline-flex items-center justify-center p-2 rounded-md ${props.updateColor ? 'text-[#54595f] hover:text-black' : 'text-[#fefefe] hover:text-white'}`}
         >
           <Bars3Icon className="h-8 w-8" />
         </button>

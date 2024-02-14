@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 @layer utilities {
-    .h-1k {
-      height: 1000px;
-    }
-    .h-750{
-        height: 750px;
-    }
+  .h-1k {
+    height: 1000px;
   }
+  .h-750 {
+    height: 750px;
+  }
+}
