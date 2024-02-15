@@ -17,7 +17,7 @@ const Header = () => {
           height={52}
           alt="logo"
         />
-        <div className="flex flex-row space-x-8 items-center">
+        <div className="flex flex-row items-center">
           <Navbar updateColor={pathname.includes('shop')} />
           <CartButton updateColor={pathname.includes('shop')}/>
         </div>
