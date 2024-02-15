@@ -38,7 +38,7 @@ const CartButton = (props: any) => {
         </span>
       </div>
       <div
-        className={`bg-black fixed ml-0 p-0 top-0 bottom-0 right-0 -left-10 transition-opacity duration-200 ease-in-out ${
+        className={`bg-black fixed ml-0 p-0 top-0 bottom-0 right-0 left-0 transition-opacity duration-200 ease-in-out ${
           showCartModal
             ? "bg-opacity-40 visible z-10 cursor-pointer"
             : "bg-opacity-0 invisible"
@@ -46,13 +46,13 @@ const CartButton = (props: any) => {
         onClick={() => setShowCartModal(false)}
       />
       <div
-        className={`fixed block overflow-auto will-change-transform transition duration-250 ease h-full left-full top-0 ${
+        className={`fixed block overflow-auto will-change-transform transition duration-250 ease h-full left-full right-0 top-0 ${
           showCartModal
             ? "z-20 visible opacity-100 bg-[#fefefe] w-[35%] -translate-x-full translate-y-0 border-[#ddd] "
             : "invisible opacity-0 translate-x-0 translate-y-0"
         }`}
       >
-        <CartPopup />
+        <CartPopup setShowCartModal={setShowCartModal}/>
       </div>
     </>
   );
