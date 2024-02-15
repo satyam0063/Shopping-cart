@@ -1,7 +1,12 @@
 import React from "react";
 import CommonButtons from "./CommonButtons";
 
-const SliderText = () => {
+const SliderText = ({ isHome }: any) => {
+  if (!isHome) {
+    return (
+      <div className="w-full flex items-center justify-center px-20 absolute top-44 text-white text-8xl font-barlow-condensed font-thin">About Us</div>
+    );
+  }
   return (
     <div className="w-full flex items-center justify-center sm:justify-start px-20 absolute top-40 text-white">
       <div className="w-full sm:w-1/2 text-center sm:text-start flex-col">
