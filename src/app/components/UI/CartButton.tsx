@@ -52,7 +52,7 @@ const CartButton = (props: any) => {
             : "invisible opacity-0 translate-x-0 translate-y-0"
         }`}
       >
-        <CartPopup />
+        <CartPopup setShowCartModal={setShowCartModal}/>
       </div>
     </>
   );

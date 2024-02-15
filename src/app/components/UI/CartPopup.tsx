@@ -2,11 +2,11 @@ import Image from "next/image";
 import React from "react";
 import CartproductCard from "./CartproductCard";
 
-const CartPopup = () => {
+const CartPopup = ({setShowCartModal}:{setShowCartModal:Function}) => {
   return (
     <div>
       <div className="absolute w-full text-left z-50 border-b border-[#ddd] p-[1.34em] leading-none max-h-[3.5em] font-medium">
-        <button className="absolute right-[1em] top-[1.1em]">
+        <button className="absolute right-[1em] top-[1.1em]" onClick={()=>setShowCartModal(false)}>
           <Image
             src="\static\images\cross-icon.svg"
             alt=""
