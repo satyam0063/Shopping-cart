@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import FilterBar from "../components/Shop/FilterBar";
-import ProductCard from "../components/UI/ProductCard";
+import FilterBar from "../../components/Shop/FilterBar";
+import ProductCard from "../../components/UI/ProductCard";
 
 const Shop = () => {
   const array = [1, 2, 3, 4, 5];

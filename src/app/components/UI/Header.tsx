@@ -7,12 +7,13 @@ import { usePathname } from "next/navigation";
 
 const Header = () => {
   const pathname = usePathname();
+  const asPath = pathname.split("/");
   return (
     <>
       <div className="w-full absolute z-10 flex flex-row justify-between py-6 px-9 items-center">
         <Image
           src={
-            pathname.includes("shop")
+            ["shop", "product"].includes(asPath[1])
               ? "/static/images/home/site-logo-black-free-img.png"
               : "/static/images/home/site-logo-white-free-img.png"
           }
@@ -21,8 +22,8 @@ const Header = () => {
           alt="logo"
         />
         <div className="flex flex-row items-center">
-          <Navbar updateColor={pathname.includes('shop')} />
-          <CartButton updateColor={pathname.includes('shop')}/>
+          <Navbar updateColor={["shop", "product"].includes(asPath[1])} />
+          <CartButton updateColor={["shop", "product"].includes(asPath[1])} />
         </div>
       </div>
     </>
