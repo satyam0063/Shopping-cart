@@ -13,7 +13,7 @@ const Product = ({ params }: { params: { id: string } }) => {
               <div className="w-full sm:w-[48%]">
                 <ImageViewer />
               </div>
-              <div className="w-full sm:w-[48%]">
+              <div className="w-full sm:w-[48%] pr-5">
                 <TopRightSection />
               </div>
             </div>

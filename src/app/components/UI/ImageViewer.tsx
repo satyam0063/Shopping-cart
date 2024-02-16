@@ -16,17 +16,16 @@ const ImageViewer = () => {
   const handleMouseMove = (e: any) => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
     const x = ((e.pageX - left) / width) * 100;
-    const y = ((e.pageY - top) / height) * 100;
+    const y = ((e.pageY - top) / height) * 100 < 100 ? ((e.pageY - top) / height) * 100 : 100;
     setStyleOnZoom({
       backgroundImage: `url(/static/images/sports-shoe5.jpg)`,
       backgroundPosition: `${x}% ${y}%`,
     });
   };
   return (
-    <div>
+    <div className="">
       <div
-        onMouseMove={handleMouseMove}
-        className="img-wrapper"
+        className="img-wrapper bg-no-repeat"
         style={styleOnZoom}
       >
         <Image
@@ -34,7 +33,8 @@ const ImageViewer = () => {
           alt=""
           height={1200}
           width={1200}
-          className="hover-zoom"
+          className="hover-zoom hover:opacity-0"
+          onMouseMove={handleMouseMove}
           onClick={() => setshowFullImage(true)}
         />
       </div>
