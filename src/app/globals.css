@@ -21,3 +21,11 @@ input[type=range]::-webkit-slider-thumb{
   -webkit-appearance: none;
   @apply bg-[#54595f]
 }
+.img-wrapper {
+  /* width: 600px; */
+  background-repeat: no-repeat;
+}
+
+.img-wrapper:hover img {
+  opacity: 0;
+}
