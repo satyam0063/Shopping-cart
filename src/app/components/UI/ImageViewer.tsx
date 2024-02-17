@@ -16,7 +16,10 @@ const ImageViewer = () => {
   const handleMouseMove = (e: any) => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
     const x = ((e.pageX - left) / width) * 100;
-    const y = ((e.pageY - top) / height) * 100 < 100 ? ((e.pageY - top) / height) * 100 : 100;
+    const y =
+      ((e.pageY - top) / height) * 100 < 100
+        ? ((e.pageY - top) / height) * 100
+        : 100;
     setStyleOnZoom({
       backgroundImage: `url(/static/images/sports-shoe5.jpg)`,
       backgroundPosition: `${x}% ${y}%`,
@@ -24,10 +27,18 @@ const ImageViewer = () => {
   };
   return (
     <div className="">
-      <div
-        className="img-wrapper bg-no-repeat"
-        style={styleOnZoom}
-      >
+      <div className="img-wrapper bg-no-repeat" style={styleOnZoom}>
+        <span
+          className="text-[#54595f] bg-[#fefefe] hover:bg-[#f5f5f5] absolute top-0 right-0 left-auto rounded-full min-h-[3em] min-w-[3em] leading-[3em] text-center px-[2px] text-[0.8em] mt-[1em] mr-[1em] flex justify-center items-center z-30"
+          onClick={() => setshowFullImage(true)}
+        >
+          <Image
+            src="/static/images/magnifying-glass.svg"
+            alt=""
+            height={20}
+            width={20}
+          />
+        </span>
         <Image
           src="/static/images/sports-shoe5.jpg"
           alt=""
@@ -35,7 +46,6 @@ const ImageViewer = () => {
           width={1200}
           className="hover-zoom hover:opacity-0"
           onMouseMove={handleMouseMove}
-          onClick={() => setshowFullImage(true)}
         />
       </div>
       <Lightbox
