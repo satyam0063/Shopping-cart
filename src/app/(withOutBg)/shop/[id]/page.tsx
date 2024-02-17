@@ -1,5 +1,6 @@
 "use client";
 import BottomSection from "@/app/components/Product/BottomSection";
+import ProductList from "@/app/components/Product/ProductList";
 import TopRightSection from "@/app/components/Product/TopRightSection";
 import ImageViewer from "@/app/components/UI/ImageViewer";
 import Image from "next/image";
@@ -23,7 +24,14 @@ const Product = ({ params }: { params: { id: string } }) => {
               </div>
             </div>
             <div className="px-9">
-            <BottomSection/>
+              <BottomSection />
+            </div>
+            <div className="max-w-[1240px] mx-auto px-9 py-10">
+              <ProductList
+                title="RELATED PRODUCTS"
+                productListType=""
+                data={[1, 2, 3]}
+              />
             </div>
           </div>
         </div>

@@ -11,6 +11,7 @@ const Reviews = () => {
     console.log(values);
   };
   const validationSchema = Yup.object().shape({
+    rating: Yup.string().required("Rating is required"),
     review: Yup.string().required("Review is a required field"),
     name: Yup.string().required("Name is a required field"),
     email: Yup.string().required("Email is a required field"),
@@ -40,9 +41,9 @@ const Reviews = () => {
             setFieldValue,
           }) => (
             <Form>
-              <div>
-                <h2>Your Rating</h2>
-                <div className="flex">
+              <div className="flex items-center mt-4">
+                <h2>Your Rating *</h2>
+                <div className="flex pl-4">
                   {[...Array(5)].map((_, index) => (
                     <label
                       key={index}
@@ -66,8 +67,11 @@ const Reviews = () => {
                     </label>
                   ))}
                 </div>
+                {errors.rating && touched.rating && (
+                  <span className="ml-5">{errors.rating}</span>
+                )}
               </div>
-              <div className="">
+              <div className="mt-4">
                 <h2>Your review *</h2>
                 <textarea
                   name="review"
@@ -82,7 +86,7 @@ const Reviews = () => {
                   <span>{errors.review}</span>
                 )}
               </div>
-              <div className="flex">
+              <div className="flex mt-4">
                 <div className="w-full sm-w-1/2 pr-1">
                   <h2>Name *</h2>
                   <input
@@ -110,7 +114,7 @@ const Reviews = () => {
               </div>
               <button
                 type="submit"
-                className="bg-[#54595f] text-[#fefefe] hover:bg-[#000] px-[20px] py-[10px] my-[5px] text-[15px] font-sans font-medium rounded-md uppercase tracking-widest"
+                className="bg-[#54595f] text-[#fefefe] hover:bg-[#000] px-[20px] py-[10px] my-[5px] mt-4 text-[15px] font-sans font-medium rounded-md uppercase tracking-widest"
               >
                 Submit
               </button>
