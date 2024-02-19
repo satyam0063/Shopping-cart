@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Roboto, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import "./responsive.css";
+import { ReduxProvider } from "@/redux/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
@@ -29,9 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className} ${barlowCondensed.variable} selection:bg-[#54595f]`}>
-        <>
-          {children}
-        </>
+          <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   );

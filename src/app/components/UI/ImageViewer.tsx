@@ -7,7 +7,7 @@ import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 // import ReactImageZoom from 'react-image-zoom';
 
-const ImageViewer = () => {
+const ImageViewer = (props: any) => {
   const [showFullImage, setshowFullImage] = useState(false);
   const [styleOnZoom, setStyleOnZoom] = useState({
     backgroundImage: `url(/static/images/sports-shoe5.jpg)`,

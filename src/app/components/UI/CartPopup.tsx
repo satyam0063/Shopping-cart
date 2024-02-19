@@ -1,8 +1,25 @@
+'use client'
 import Image from "next/image";
 import React from "react";
 import CartproductCard from "./CartproductCard";
+import { UseAppSelector } from "@/redux/store";
+
+interface Product {
+  brand: string;
+  category: string;
+  description: string;
+  discountPercentage: number;
+  id: number;
+  images: string[];
+  price: number;
+  rating: number;
+  stock: number;
+  thumbnail: string;
+  title: string;
+}
 
 const CartPopup = ({setShowCartModal}:{setShowCartModal:Function}) => {
+  const cartList = UseAppSelector((state) => (state.cart as any).items); 
   return (
     <div>
       <div className="absolute w-full text-left z-50 border-b border-[#ddd] p-[1.34em] leading-none max-h-[3.5em] font-medium">
@@ -19,6 +36,10 @@ const CartPopup = ({setShowCartModal}:{setShowCartModal:Function}) => {
       <div className="pt-[3.5em] flex flex-col h-screen ">
         <div className="flex-grow overflow-auto">
           <div className="p-5">
+            {cartList && cartList.length > 0 && cartList.map((cartItem: any) => (
+              <CartproductCard key={`cart-product-${cartItem.product.id}`} item={cartItem}/>
+              ))}
+            {/* <CartproductCard />
             <CartproductCard />
             <CartproductCard />
             <CartproductCard />
@@ -34,8 +55,7 @@ const CartPopup = ({setShowCartModal}:{setShowCartModal:Function}) => {
             <CartproductCard />
             <CartproductCard />
             <CartproductCard />
-            <CartproductCard />
-            <CartproductCard />
+            <CartproductCard /> */}
           </div>
         </div>
         <div className="flex flex-col w-full">

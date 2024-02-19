@@ -1,9 +1,39 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useCallback, memo } from "react";
 import ProdQuantity from "./ProdQuantity";
+import { useDispatch } from "react-redux";
+import { updateQuantity, removeFromCart } from "@/redux/features/cartReducer";
 
-const CartproductCard = () => {
+const CartproductCard = (props: any) => {
+  const dispatch = useDispatch();
+
+  const handleQuantity = useCallback(
+    (action: string) => {
+      if (action === "add") {
+        dispatch(
+          updateQuantity({
+            id: props.item.product.id,
+            quantity: props.item.quantity + 1,
+          })
+        );
+      }
+      if (action === "substract") {
+        dispatch(
+          updateQuantity({
+            id: props.item.product.id,
+            quantity: props.item.quantity > 0 ? props.item.quantity - 1 : 0,
+          })
+        );
+      }
+    },
+    [dispatch, props.item.product.id, props.item.quantity]
+  );
+
+  const handleRemove = useCallback(() => {
+    dispatch(removeFromCart(props.item.product.id));
+  }, [dispatch, props.item.product.id]);
+
   return (
     <div className="flex border-b border-[#dddddd] py-4">
       <div className="h-auto w-[5em]">
@@ -16,9 +46,12 @@ const CartproductCard = () => {
       </div>
       <div className="px-3 flex flex-col justify-between h-auto w-full ">
         <div className="flex justify-between items-start">
-          <div>Dark Brown Jeans</div>
+          <div>{props.item.product.title}</div>
           <div>
-            <div className="h-[20px] w-[20px] mt-[4px] border border-[#000] hover:bg-[#ddd]  rounded-full leading-4 flex justify-center items-center">
+            <button
+              className="h-[20px] w-[20px] mt-[4px] border border-[#000] hover:bg-[#ddd]  rounded-full leading-4 flex justify-center items-center"
+              onClick={handleRemove}
+            >
               <Image
                 src="/static/images/cross-icon.svg"
                 alt=""
@@ -26,16 +59,19 @@ const CartproductCard = () => {
                 height={14}
                 className=""
               />
-            </div>
+            </button>
           </div>
         </div>
         <div className="flex justify-between items-end">
-          <ProdQuantity />
-          <div>$145</div>
+          <ProdQuantity
+            handleQuantity={handleQuantity}
+            quantity={props.item.quantity}
+          />
+          <div>${props.item.product.price}</div>
         </div>
       </div>
     </div>
   );
 };
 
-export default CartproductCard;
+export default memo(CartproductCard);

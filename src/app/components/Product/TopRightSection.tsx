@@ -1,8 +1,51 @@
-import React from "react";
+"use client";
+import React, { useCallback, useState } from "react";
 import ProdQuantity from "../UI/ProdQuantity";
 import AddToCartBtn from "../UI/AddToCartBtn";
+import { useDispatch } from "react-redux";
+import { addToCart, updateQuantity } from "@/redux/features/cartReducer";
 
-const TopRightSection = () => {
+interface Product {
+  brand: string;
+  category: string;
+  description: string;
+  discountPercentage: number;
+  id: number;
+  images: string[];
+  price: number;
+  rating: number;
+  stock: number;
+  thumbnail: string;
+  title: string;
+}
+
+const TopRightSection = (props: any) => {
+  const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(0);
+
+  const handleAddToCart = useCallback(() => {
+    console.log('props.product', props.product);
+      console.log('quantity', quantity);
+    if (quantity !== 0) {
+      dispatch(addToCart(props.product));
+      dispatch(updateQuantity({id: props.product.id, quantity}));
+    }
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.product, quantity]);
+
+  const handleQuantity = useCallback(
+    (action: string) => {
+      if (action === "add") {
+        setQuantity(quantity + 1);
+      }
+      if (action === "substract") {
+        setQuantity(quantity > 0 ? quantity - 1 : 0);
+      }
+    },
+    [quantity]
+  );
+
   return (
     <div>
       <div className="flex mb-[15px]">
@@ -44,15 +87,17 @@ const TopRightSection = () => {
       </div>
       <div className="flex border-b border-[#d5d5d5]">
         <div>
-          <ProdQuantity />
+          <ProdQuantity handleQuantity={handleQuantity} quantity={quantity}/>
         </div>
         <div>
-          <AddToCartBtn />
+          <AddToCartBtn handleAddToCart={handleAddToCart} />
         </div>
       </div>
       <div className="text-[15px] text-[#4f4f4f] mt-1 font-sans">
         <span>Category: </span>
-        <span className="text-[#54595f] cursor-pointer hover:text-[#000]">Shoes</span>
+        <span className="text-[#54595f] cursor-pointer hover:text-[#000]">
+          Shoes
+        </span>
       </div>
     </div>
   );

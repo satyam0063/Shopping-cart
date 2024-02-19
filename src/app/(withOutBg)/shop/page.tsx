@@ -1,10 +1,30 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import FilterBar from "../../components/Shop/FilterBar";
 import ProductCard from "../../components/UI/ProductCard";
+import axios from "axios";
+import { useDispatch } from 'react-redux';
+import { UseAppSelector } from "@/redux/store";
+import { setAllProducts } from "@/redux/features/productReducer";
 
 const Shop = () => {
-  const array = [1, 2, 3, 4, 5];
+  const dispatch = useDispatch();
+  const productsList = UseAppSelector((state) => state.product.items);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const result: any =  await axios.get("https://dummyjson.com/products");
+        dispatch(setAllProducts(result.data.products));
+      } catch (error: any) {
+        console.log('resdt', error);
+        throw new Error(error.message);
+      }
+    };
+    getProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className="w-full bg-[#f5f5f5] px-5 py-16">
       <div className="w-full bg-[#ffffff] px-4 py-4 sm:px-20 sm:py-12">
@@ -13,9 +33,9 @@ const Shop = () => {
         </div>
         <FilterBar />
         <div className="w-full flex flex-row flex-wrap">
-          {array.map((_item: any, idx: any) => (
+          {productsList && productsList.map((item: any, idx: any) => (
             <div className="w-full sm:w-1/4 px-2 py-2" key={idx}>
-              <ProductCard />
+              <ProductCard product={item}/>
             </div>
           ))}
         </div>

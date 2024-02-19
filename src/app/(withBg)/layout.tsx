@@ -16,6 +16,7 @@ const WithBglayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
+  console.log('withBgLayout');
   const pathname = usePathname();
   const isHome = pathname.includes("home");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

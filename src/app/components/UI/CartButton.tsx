@@ -2,9 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { ShoppingBagIcon } from "@heroicons/react/24/solid";
 import CartPopup from "./CartPopup";
+import { UseAppSelector } from "@/redux/store";
 
 const CartButton = (props: any) => {
   const [showCartModal, setShowCartModal] = useState(false);
+  const cartList = UseAppSelector((state) => (state.cart as any).items);
+  const totalCartCount = cartList.reduce((accumulator: number, currentValue: any) => accumulator + currentValue.quantity, 0);
+
   useEffect(() => {
     document.body.style.overflowY = showCartModal ? "hidden" : "auto";
     return () => {
@@ -34,7 +38,7 @@ const CartButton = (props: any) => {
               : "bg-[#fefefe] text-[#54595f]"
           } text-xs font-bold rounded-full`}
         >
-          3
+          {totalCartCount}
         </span>
       </div>
       <div

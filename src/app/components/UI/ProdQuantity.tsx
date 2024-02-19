@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+'use client'
+import React, { memo } from "react";
 
-const ProdQuantity = () => {
-  const [value, setValue] = useState(0);
+const ProdQuantity = (props: any) => {
   return (
     <div className="flex justify-center items-center border border-[#ddd]">
       <div
         className="px-3 py-[3px] hover:bg-[#c8c7c7] cursor-pointer select-none"
-        onClick={() => setValue(value > 0 ? value - 1 : 0)}
+        onClick={() => props.handleQuantity('substract')}
       >
         -
       </div>
       <div className="border-r border-l border-[#ddd] px-3 py-[2px]">
-        {value}
+        {props.quantity}
       </div>
       <div
         className="px-3 py-[3px] hover:bg-[#c8c7c7] cursor-pointer select-none"
-        onClick={() => setValue(value + 1)}
+        onClick={() => props.handleQuantity('add')}
       >
         +
       </div>
@@ -23,4 +23,4 @@ const ProdQuantity = () => {
   );
 };
 
-export default ProdQuantity;
+export default memo(ProdQuantity);

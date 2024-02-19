@@ -1,3 +1,4 @@
+'use client'
 import OfferSection from "@/app/components/Home/OfferSection";
 import Image from "next/image";
 import React from "react";
