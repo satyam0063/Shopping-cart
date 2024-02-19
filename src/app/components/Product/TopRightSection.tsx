@@ -46,7 +46,7 @@ const TopRightSection = () => {
         <div>
           <ProdQuantity />
         </div>
-        <div>
+        <div className="mb-[15px]">
           <AddToCartBtn />
         </div>
       </div>
