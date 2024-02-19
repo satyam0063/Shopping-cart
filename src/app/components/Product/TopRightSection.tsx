@@ -89,7 +89,7 @@ const TopRightSection = (props: any) => {
         <div>
           <ProdQuantity handleQuantity={handleQuantity} quantity={quantity}/>
         </div>
-        <div>
+        <div className="mb-[15px]">
           <AddToCartBtn handleAddToCart={handleAddToCart} />
         </div>
       </div>
