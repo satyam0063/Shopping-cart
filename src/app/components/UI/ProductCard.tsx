@@ -42,7 +42,7 @@ const ProductCard = ({ product }:{product: Product}) => {
           width={0}
           height={0}
           sizes="100vw"
-          className="w-[100%] h-[100%]"
+          className="w-[100%] min-h-[200px]  max-h-[200px] bg-contain"
         />
         <span className="text-[#fff] transition-all duration-200 ease-linear bg-[#54595f] absolute bottom-0 left-0 opacity-0 min-h-[2em] leading-[2em] w-full text-center group-hover:opacity-100 hover:bg-[#000]">
           Quick View
