@@ -1,6 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import React, { useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setMinPrice, setMaxPrice } from "@/redux/features/productReducer";
+
 
 const RangeSlider = ({
   min,
@@ -21,6 +24,7 @@ const RangeSlider = ({
   setMinValue: Function;
   setMaxValue: Function;
 }) => {
+  const dispatch = useDispatch();
   const progressRef: any = useRef(null!);
 
   const handleMin = (e: any) => {
@@ -28,10 +32,12 @@ const RangeSlider = ({
       if (parseInt(e.target.value) >= maxValue - 900) {
       } else {
         setMinValue(parseInt(e.target.value));
+        dispatch(setMinPrice(parseInt(e.target.value)));
       }
     } else {
       if (parseInt(e.target.value) < minValue) {
         setMinValue(parseInt(e.target.value));
+        dispatch(setMinPrice(parseInt(e.target.value)));
       }
     }
   };
@@ -40,10 +46,12 @@ const RangeSlider = ({
       if (parseInt(e.target.value) < minValue + 1000) {
       } else {
         setMaxValue(parseInt(e.target.value));
+        dispatch(setMaxPrice(parseInt(e.target.value)));
       }
     } else {
       if (parseInt(e.target.value) > maxValue) {
         setMaxValue(parseInt(e.target.value));
+        dispatch(setMaxPrice(parseInt(e.target.value)));
       }
     }
   };

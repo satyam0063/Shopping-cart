@@ -14,24 +14,62 @@ interface Product {
   title: string;
 }
 
+interface PriceRange {
+  min: 0;
+  max: 0;
+}
+
 interface ProductState {
-  items: Product[];
+  products: Product[];
+  categories: string[];
+  selectedCategory: string;
+  filterByPrice: boolean;
+  priceRange: PriceRange;
 }
 
 const initialState: ProductState = {
-  items: [],
+  products: [],
+  categories: [],
+  priceRange: {
+    min: 0,
+    max: 0,
+  },
+  selectedCategory: "",
+  filterByPrice: false,
 };
 
 const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-    setAllProducts: (state: any, action: PayloadAction<ProductState>) => {
-      state.items = action.payload;
+    setAllProducts: (state: any, action: PayloadAction<Product[]>) => {
+      state.products = action.payload;
+    },
+    setCategories: (state: any, action: PayloadAction<ProductState>) => {
+      state.categories = action.payload;
+    },
+    setSelectedCategory: (state: any, action: PayloadAction<string>) => {
+      state.selectedCategory = action.payload;
+    },
+    setFilterByPrice: (state: any, action: PayloadAction<boolean>) => {
+      state.filterByPrice = action.payload;
+    },
+    setMinPrice: (state: any, action: PayloadAction<number>) => {
+      state.priceRange.min = action.payload;
+    },
+    setMaxPrice: (state: any, action: PayloadAction<number>) => {
+      state.priceRange.max = action.payload;
     },
   },
 });
 
-export const { setAllProducts } = productSlice.actions;
+export const {
+  setAllProducts,
+  setCategories,
+  setSelectedCategory,
+  setFilterByPrice,
+  setMinPrice,
+  setMaxPrice,
+} = productSlice.actions;
 
 export default productSlice.reducer;

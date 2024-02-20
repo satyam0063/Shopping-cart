@@ -1,8 +1,16 @@
 "use client";
 import React, { useState } from "react";
 import RangeSlider from "../UI/RangeSlider";
+import { UseAppSelector } from "@/redux/store";
+import { useDispatch } from "react-redux";
+import { setFilterByPrice, setSelectedCategory } from "@/redux/features/productReducer";
 
 const FilterModal = () => {
+  const dispatch = useDispatch();
+  const categoriesList = UseAppSelector((state) => state.product.categories);
+  const selectedCategory = UseAppSelector((state) => state.product.selectedCategory);
+  const filterByPrice = UseAppSelector((state) => state.product.filterByPrice);
+
   const initialMin = 2500;
   const initialMax = 7500;
   const min = 0;
@@ -11,6 +19,15 @@ const FilterModal = () => {
   const priceCap = 1000;
   const [minValue, setMinValue] = useState(initialMin);
   const [maxValue, setMaxValue] = useState(initialMax);
+
+  const handleSelectedCategory = (cl: string) => {
+    dispatch(setSelectedCategory(cl));
+  };
+
+  const handleFilterByPrice = (val: any) => {
+    dispatch(setFilterByPrice(val));
+  }
+
   return (
     <div className="p-9">
       <div className="mb-11">
@@ -31,7 +48,8 @@ const FilterModal = () => {
         </div>
         <div className="flex justify-between">
           <div>
-            <button>Filter</button>
+            {!filterByPrice && (<button onClick={() => handleFilterByPrice(true)}>Filter</button>)}
+            {filterByPrice && (<button onClick={() => handleFilterByPrice(false)}>Clear Price Filter</button>)}
           </div>
           <div>
             Price: {minValue} - {maxValue}
@@ -42,18 +60,24 @@ const FilterModal = () => {
         <h2 className="text-[23px] text-[#4f4f4f] font-barlow-condensed mb-5">
           PRODUCT CATEGORIES
         </h2>
-        <div className="flex justify-between px-1 mb-2">
-          <div>Accessories</div>
-          <div>(3)</div>
-        </div>
-        <div className="flex justify-between px-1 mb-2">
-          <div>Accessories</div>
-          <div>(3)</div>
-        </div>
-        <div className="flex justify-between px-1 mb-2">
-          <div>Accessories</div>
-          <div>(3)</div>
-        </div>
+        {categoriesList &&
+          categoriesList.length > 0 &&
+          categoriesList.map((cl: any, i: number) => (
+            <div
+              className="flex justify-between px-1 mb-2"
+              key={`categories-${i}`}
+            >
+              <button
+                className={`uppercase hover:text-black ${
+                  cl === selectedCategory ? "text-black" : ""
+                }`}
+                onClick={() => handleSelectedCategory(cl)}
+              >
+                {cl.replaceAll('-', ' ')}
+              </button>
+              {/* <div>(3)</div> */}
+            </div>
+          ))}
       </div>
       <div className="mb-11">
         <h2 className="text-[23px] text-[#4f4f4f] font-barlow-condensed mb-5">
