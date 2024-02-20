@@ -60,6 +60,21 @@ const productSlice = createSlice({
     setMaxPrice: (state: any, action: PayloadAction<number>) => {
       state.priceRange.max = action.payload;
     },
+    sortProducts: (state: any, action: PayloadAction<string>) => {
+      if (action.payload === "price-asc") {
+        state.products = state.products.sort(
+          (a: any, b: any) => a.price - b.price
+        );
+      } else if (action.payload === "price-desc") {
+        state.products = state.products.sort(
+          (a: any, b: any) => b.price - a.price
+        );
+      } else {
+        state.products = state.products.sort(
+          (a: any, b: any) => a.title - b.title
+        );
+      }
+    },
   },
 });
 
@@ -70,6 +85,7 @@ export const {
   setFilterByPrice,
   setMinPrice,
   setMaxPrice,
+  sortProducts,
 } = productSlice.actions;
 
 export default productSlice.reducer;
