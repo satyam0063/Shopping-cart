@@ -5,7 +5,7 @@ import { Formik, Form } from "formik";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { StarIcon as StarOutline } from "@heroicons/react/24/outline";
 
-const Reviews = () => {
+const Reviews = (props:any) => {
   const initialValues = { review: "", name: "", email: "", rating: "" };
   const onSubmit = (values: any) => {
     console.log(values);
@@ -20,7 +20,7 @@ const Reviews = () => {
     <div className="border border-[#d5d5d5] p-5">
       <div>
         <h2 className="text-[#4f4f4f] text-[1.34rem] font-sans font-normal leading-[1.3]">
-          Be the first to review “DNK Blue Sport Shoes”
+          Be the first to review “{props.product.title}”
         </h2>
         <p className="text-[#4f4f4f] leading-[2]">
           Your email address will not be published. Required fields are marked *

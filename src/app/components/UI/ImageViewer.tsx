@@ -10,7 +10,7 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 const ImageViewer = (props: any) => {
   const [showFullImage, setshowFullImage] = useState(false);
   const [styleOnZoom, setStyleOnZoom] = useState({
-    backgroundImage: `url(/static/images/sports-shoe5.jpg)`,
+    backgroundImage: `url(${props.image})`,
     backgroundPosition: "0% 0%",
   } as any);
   const handleMouseMove = (e: any) => {
@@ -21,7 +21,7 @@ const ImageViewer = (props: any) => {
         ? ((e.pageY - top) / height) * 100
         : 100;
     setStyleOnZoom({
-      backgroundImage: `url(/static/images/sports-shoe5.jpg)`,
+      backgroundImage: `url(${props.image})`,
       backgroundPosition: `${x}% ${y}%`,
     });
   };
@@ -40,7 +40,7 @@ const ImageViewer = (props: any) => {
           />
         </span>
         <Image
-          src="/static/images/sports-shoe5.jpg"
+          src={props.image}
           alt=""
           height={1200}
           width={1200}
@@ -51,7 +51,7 @@ const ImageViewer = (props: any) => {
       <Lightbox
         open={showFullImage}
         close={() => setshowFullImage(false)}
-        slides={[{ src: "/static/images/sports-shoe5.jpg" }]}
+        slides={[{ src: props.image }]}
         plugins={[Fullscreen, Zoom]}
         styles={{ container: { backgroundColor: "rgba(0, 0, 0, .7)" } }}
         render={{

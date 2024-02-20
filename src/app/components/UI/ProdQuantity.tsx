@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { memo } from "react";
 
 const ProdQuantity = (props: any) => {
@@ -6,7 +6,9 @@ const ProdQuantity = (props: any) => {
     <div className="flex justify-center items-center border border-[#ddd]">
       <div
         className="px-3 py-[3px] hover:bg-[#c8c7c7] cursor-pointer select-none"
-        onClick={() => props.handleQuantity('substract')}
+        onClick={() =>
+          props.setQuantity(props.quantity > 1 ? props.quantity - 1 : 1)
+        }
       >
         -
       </div>
@@ -15,7 +17,7 @@ const ProdQuantity = (props: any) => {
       </div>
       <div
         className="px-3 py-[3px] hover:bg-[#c8c7c7] cursor-pointer select-none"
-        onClick={() => props.handleQuantity('add')}
+        onClick={() => props.setQuantity(props.quantity + 1)}
       >
         +
       </div>

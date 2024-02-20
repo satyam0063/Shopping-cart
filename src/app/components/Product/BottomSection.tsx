@@ -5,11 +5,14 @@ import Description from "./Description";
 import AddInfo from "./AddInfo";
 import Reviews from "./Reviews";
 
-const BottomSection = () => {
+const BottomSection = (props: any) => {
   const array = [
-    { name: "Description", component: <Description /> },
+    {
+      name: "Description",
+      component: <Description description={props.product.description} />,
+    },
     { name: "Additional Information", component: <AddInfo /> },
-    { name: "Reviews", component: <Reviews /> },
+    { name: "Reviews", component: <Reviews product={props.product}/> },
   ];
   const [selectedItem, setSelectedItem] = useState(0);
   return (

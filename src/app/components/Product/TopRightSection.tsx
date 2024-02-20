@@ -2,8 +2,6 @@
 import React, { useCallback, useState } from "react";
 import ProdQuantity from "../UI/ProdQuantity";
 import AddToCartBtn from "../UI/AddToCartBtn";
-import { useDispatch } from "react-redux";
-import { addToCart, updateQuantity } from "@/redux/features/cartReducer";
 
 interface Product {
   brand: string;
@@ -20,31 +18,10 @@ interface Product {
 }
 
 const TopRightSection = (props: any) => {
-  const dispatch = useDispatch();
-  const [quantity, setQuantity] = useState(0);
-
-  const handleAddToCart = useCallback(() => {
-    console.log('props.product', props.product);
-      console.log('quantity', quantity);
-    if (quantity !== 0) {
-      dispatch(addToCart(props.product));
-      dispatch(updateQuantity({id: props.product.id, quantity}));
-    }
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.product, quantity]);
-
-  const handleQuantity = useCallback(
-    (action: string) => {
-      if (action === "add") {
-        setQuantity(quantity + 1);
-      }
-      if (action === "substract") {
-        setQuantity(quantity > 0 ? quantity - 1 : 0);
-      }
-    },
-    [quantity]
-  );
+  const [quantity, setQuantity] = useState(1);
+  const priceAfterDiscount = (price: number, discount: number) => {
+    return (price - (price * discount) / 100).toFixed(2);
+  };
 
   return (
     <div>
@@ -69,34 +46,33 @@ const TopRightSection = (props: any) => {
       <div className="mb-[1em]">
         <del className="text-[#4f4f4f] leading-tight font-bold opacity-60 text-[24px]">
           <span>$</span>
-          35.00
+          {props.product.price}
         </del>{" "}
         <ins className="text-[#4f4f4f] leading-tight font-bold no-underline text-[24px]">
           <span>$</span>
-          32.00
+          {priceAfterDiscount(
+            props.product.price,
+            props.product.discountPercentage
+          )}
         </ins>
       </div>
       <div className="mb-[1em]">
         <p className="text-[#4f4f4f] leading-normal font-sans text-[17px] tracking-wide">
-          Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris
-          vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu
-          ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris
-          in erat justo. Nullam ac urna eu felis dapibus condimentum sit amet a
-          augue. Sed non neque elit sed.
+          {props.product.description}
         </p>
       </div>
       <div className="flex border-b border-[#d5d5d5]">
         <div>
-          <ProdQuantity handleQuantity={handleQuantity} quantity={quantity}/>
+          <ProdQuantity setQuantity={setQuantity} quantity={quantity} />
         </div>
         <div className="mb-[15px]">
-          <AddToCartBtn handleAddToCart={handleAddToCart} />
+          <AddToCartBtn product={props.product} quantity={quantity}/>
         </div>
       </div>
       <div className="text-[15px] text-[#4f4f4f] mt-1 font-sans">
         <span>Category: </span>
-        <span className="text-[#54595f] cursor-pointer hover:text-[#000]">
-          Shoes
+        <span className="text-[#54595f] cursor-pointer hover:text-[#000] capitalize">
+          {props.product.category}
         </span>
       </div>
     </div>

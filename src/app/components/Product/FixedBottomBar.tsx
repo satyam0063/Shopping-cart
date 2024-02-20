@@ -1,9 +1,13 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import ProdQuantity from "../UI/ProdQuantity";
 import AddToCartBtn from "../UI/AddToCartBtn";
 
 const FixedBottomBar = (props: any) => {
+  const [quantity, setQuantity] = useState(1);
+  const priceAfterDiscount = (price: number, discount: number) => {
+    return (price - (price * discount) / 100).toFixed(2);
+  };
   return (
     <>
       <div
@@ -17,31 +21,34 @@ const FixedBottomBar = (props: any) => {
           <div className="flex items-center">
             <div className="">
               <Image
-                src="/static/images/sports-shoe5-400x400.jpg"
+                src={props.product.thumbnail}
                 alt=""
                 height={500}
                 width={500}
                 className="max-h-[50px] max-w-[50px]"
               />
             </div>
-            <div>DNK Blue Sport Shoes</div>
+            <div>{props.product.title}</div>
           </div>
           <div className="flex items-center">
             <div>
               <del className="text-[#4f4f4f] leading-tight font-bold opacity-60 ">
                 <span>$</span>
-                35.00
+                {props.product.price}
               </del>{" "}
               <ins className="text-[#4f4f4f] leading-tight font-bold no-underline ">
                 <span>$</span>
-                32.00
+                {priceAfterDiscount(
+                  props.product.price,
+                  props.product.discountPercentage
+                )}
               </ins>
             </div>
             <div>
-              <ProdQuantity />
+              <ProdQuantity setQuantity={setQuantity} quantity={quantity} />
             </div>
             <div className="">
-              <AddToCartBtn />
+            <AddToCartBtn product={props.product} quantity={quantity}/>
             </div>
           </div>
         </div>
