@@ -20,8 +20,10 @@ export async function GET(req: any) {
 export async function POST(req: any) {
   const payload = await req.json();
   try {
-    await mongoose.connect(connectionStr);
-    let order = new Order(payload);
+      
+      await mongoose.connect(connectionStr);
+      let order = new Order(payload);
+      console.log(order);
     const result = await order.save();
     return NextResponse.json({ result: result, success: true });
   } catch (error) {

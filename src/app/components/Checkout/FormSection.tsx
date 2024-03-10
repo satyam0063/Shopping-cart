@@ -6,9 +6,11 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { clearCart } from "@/redux/features/cartReducer";
 import axios from "axios";
+import { UseAppSelector } from "@/redux/store";
 const FormSection = () => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const cartList = UseAppSelector((state) => (state.cart as any).items);
   const initialValues = {
     email: "",
     firstName: "",
@@ -34,8 +36,9 @@ const FormSection = () => {
     phoneShipping: "",
   };
   const onSubmit = (values: any) => {
+    const payload = {...values,products:cartList}
     axios
-      .post("/api/orders", values)
+      .post("/api/orders", payload)
       .then(async (result: any) => {
         await dispatch(clearCart());
         console.log(result, "Successful");
@@ -119,7 +122,7 @@ const FormSection = () => {
   });
   return (
     <>
-      <div className="flex justify-between items-end">
+      <div className="flex justify-between items-baseline">
         <p className="font-barlow-condensed font-medium text-[28px]">
           Customer Information
         </p>

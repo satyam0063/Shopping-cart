@@ -26,18 +26,20 @@ const CartPopup = ({ setShowCartModal }: { setShowCartModal: Function }) => {
   const subTotal = useMemo(
     () =>
       cartList.reduce((accumulator: number, currentValue: Product) => {
-        return Number((
-          accumulator +
-          Number(
+        return Number(
+          (
+            accumulator +
             Number(
-              (
-                currentValue.price -
-                (currentValue.price * currentValue.discountPercentage) / 100
-              ).toFixed(2)
-            )
-          ) *
-            currentValue.quantity
-        )?.toFixed(2));
+              Number(
+                (
+                  currentValue.price -
+                  (currentValue.price * currentValue.discountPercentage) / 100
+                ).toFixed(2)
+              )
+            ) *
+              currentValue.quantity
+          )?.toFixed(2)
+        );
       }, 0),
     [cartList]
   );
@@ -85,7 +87,10 @@ const CartPopup = ({ setShowCartModal }: { setShowCartModal: Function }) => {
               </button>
             </div>
             <div className="text-center">
-              <button className="text-[#fefefe] font-medium bg-[#54595f] hover:bg-[#000] w-full px-9 py-5 mt-[10px] rounded-md leading-[1em] tracking-[2px] uppercase">
+              <button
+                className="text-[#fefefe] font-medium bg-[#54595f] hover:bg-[#000] w-full px-9 py-5 mt-[10px] rounded-md leading-[1em] tracking-[2px] uppercase"
+                onClick={() => router.push("/checkout")}
+              >
                 Checkout
               </button>
             </div>
