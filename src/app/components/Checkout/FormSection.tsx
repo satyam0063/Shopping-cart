@@ -5,6 +5,7 @@ import { Formik, Form } from "formik";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { clearCart } from "@/redux/features/cartReducer";
+import axios from "axios";
 const FormSection = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -33,9 +34,16 @@ const FormSection = () => {
     phoneShipping: "",
   };
   const onSubmit = (values: any) => {
-    console.log(values);
-    dispatch(clearCart);
-    router.push("/successful");
+    axios
+      .post("/api/orders", values)
+      .then(async (result: any) => {
+        await dispatch(clearCart());
+        console.log(result, "Successful");
+        router.push("/successful");
+      })
+      .catch((error: any) => {
+        console.log(error);
+      });
   };
   const validationSchema: any = Yup.object().shape({
     isShippingDifferent: Yup.boolean(),

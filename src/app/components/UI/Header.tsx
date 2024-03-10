@@ -1,13 +1,26 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "./Navbar";
 import CartButton from "./CartButton";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { initializeCartProduct } from "@/redux/features/cartReducer";
 
 const Header = () => {
   const pathname = usePathname();
   const asPath = pathname.split("/");
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Perform localStorage action
+      const savedData = localStorage.getItem("cartProducts")
+        ? JSON.parse(localStorage.getItem("cartProducts")!)
+        : [];
+      dispatch(initializeCartProduct(savedData));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <div className="w-full absolute z-10 flex flex-row justify-between py-6 px-9 items-center">
