@@ -13,7 +13,9 @@ const Header = () => {
       <div className="w-full absolute z-10 flex flex-row justify-between py-6 px-9 items-center">
         <Image
           src={
-            ["shop", "product"].includes(asPath[1])
+            ["shop", "product", "cart", "checkout", "successful"].includes(
+              asPath[1]
+            )
               ? "/static/images/home/site-logo-black-free-img.png"
               : "/static/images/home/site-logo-white-free-img.png"
           }
@@ -22,8 +24,24 @@ const Header = () => {
           alt="logo"
         />
         <div className="flex flex-row items-center">
-          <Navbar updateColor={["shop", "product"].includes(asPath[1])} />
-          <CartButton updateColor={["shop", "product"].includes(asPath[1])} />
+          <Navbar
+            updateColor={[
+              "shop",
+              "product",
+              "cart",
+              "checkout",
+              "successful",
+            ].includes(asPath[1])}
+          />
+          <CartButton
+            updateColor={[
+              "shop",
+              "product",
+              "cart",
+              "checkout",
+              "successful",
+            ].includes(asPath[1])}
+          />
         </div>
       </div>
     </>

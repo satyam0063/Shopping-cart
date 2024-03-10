@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useMemo } from "react";
 import CartproductCard from "./CartproductCard";
 import { UseAppSelector } from "@/redux/store";
-
+import { useRouter } from "next/navigation";
 interface Product {
   brand: string;
   category: string;
@@ -20,20 +20,27 @@ interface Product {
 }
 
 const CartPopup = ({ setShowCartModal }: { setShowCartModal: Function }) => {
+  const router = useRouter();
   const cartList = UseAppSelector((state) => (state.cart as any).items);
+
   const subTotal = useMemo(
     () =>
       cartList.reduce((accumulator: number, currentValue: Product) => {
-        return (
+        return Number((
           accumulator +
-          Number((currentValue.price - (currentValue.price * currentValue.discountPercentage) / 100).toFixed(2)) *
+          Number(
+            Number(
+              (
+                currentValue.price -
+                (currentValue.price * currentValue.discountPercentage) / 100
+              ).toFixed(2)
+            )
+          ) *
             currentValue.quantity
-        );
+        )?.toFixed(2));
       }, 0),
     [cartList]
   );
-  console.log(cartList);
-
   return (
     <div>
       <div className="absolute w-full text-left z-50 border-b border-[#ddd] p-[1.34em] leading-none max-h-[3.5em] font-medium">
@@ -70,7 +77,10 @@ const CartPopup = ({ setShowCartModal }: { setShowCartModal: Function }) => {
           </div>
           <div className="px-[22px] py-[21px]">
             <div className="text-center">
-              <button className="text-[#fefefe] font-medium bg-[#54595f] hover:bg-[#000] w-full px-9 py-5 mb-[5px] rounded-md leading-[1em] tracking-[2px] uppercase ">
+              <button
+                className="text-[#fefefe] font-medium bg-[#54595f] hover:bg-[#000] w-full px-9 py-5 mb-[5px] rounded-md leading-[1em] tracking-[2px] uppercase "
+                onClick={() => router.push("/cart")}
+              >
                 View Cart
               </button>
             </div>

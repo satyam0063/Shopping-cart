@@ -16,7 +16,7 @@ const Home = () => {
         {/* <h2 className="text-center uppercase font-barlow-condensed text-[42px] mb-8">
           Featured Products
         </h2> */}
-        <ProductList title="FEATURED PRODUCTS" productListType='featured' data={[]} />
+        {/* <ProductList title="FEATURED PRODUCTS" productListType='featured' data={[]} /> */}
       </div>
       <TrackingBox />
     </div>

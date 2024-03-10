@@ -27,3 +27,29 @@ body {
   padding: 0 !important;
   margin: 0 !important;
 }
+.cartTable table tbody tr td{
+  padding: 10px 0px !important;
+}
+.cartTable table thead tr th{
+  color: #4f4f4f;
+  font-family: sans-serif;
+  padding: 15px 0px;
+}
+.viewOnlyTable{
+  border: #ddd solid 1px;
+  padding: 0px 10px;
+}
+.viewOnlyTable thead tr{
+  border-bottom: #ddd solid 1px;
+}
+.viewOnlyTable tbody tr{
+  border-bottom: #ddd solid 1px;
+}
+.viewOnlyTable tbody tr td,.viewOnlyTable thead tr th{
+padding: 1em 0em;
+color: #4f4f4f;
+font-family: sans-serif;
+}
+.viewOnlyTable tbody tr:last-child{
+  border-bottom: #ddd solid 0px;
+}
