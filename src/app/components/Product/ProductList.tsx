@@ -17,7 +17,7 @@ const ProductList = (props: any) => {
       <div className="w-full flex flex-row flex-wrap">
         {array.map((_item: any, idx: any) => (
           <div className="w-full sm:w-1/4 px-2 py-2" key={idx}>
-            <ProductCard />
+            {/* <ProductCard /> */}
           </div>
         ))}
       </div>
