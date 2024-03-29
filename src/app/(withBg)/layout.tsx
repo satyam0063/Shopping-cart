@@ -4,7 +4,7 @@ import Image from "next/image";
 import Header from "../components/UI/Header";
 import SliderText from "../components/UI/SliderText";
 import Footer from "../components/UI/Footer";
-// import { usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const images = [
   "/static/images/home/home-slider1.jpg",
@@ -16,8 +16,8 @@ const WithBglayout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  // const pathname = usePathname();
-  const isHome = true;
+  const pathname = usePathname();
+  const isHome = pathname?.includes("home");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const WithBglayout = ({
             <Image
               src={images[currentImageIndex]}
               className="absolute inset-0 object-cover"
-              layout="fill"
+              fill
               alt="logo"
             />
         )}

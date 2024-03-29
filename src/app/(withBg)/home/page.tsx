@@ -1,4 +1,4 @@
-"use client";
+
 import ImageGrid from "@/app/components/Home/ImageGrid";
 import OfferSection from "@/app/components/Home/OfferSection";
 import ProductList from "@/app/components/Product/ProductList";
