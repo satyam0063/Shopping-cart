@@ -3,7 +3,7 @@ import { Order } from "@/app/apiComponents/models/order";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
 
-export async function GET(req: any) {
+export async function GET() {
   // const searchParams = req.nextUrl.searchParams;
   // console.log(searchParams.get('id'));
   let data = [];
@@ -23,7 +23,6 @@ export async function POST(req: any) {
       
       await mongoose.connect(connectionStr);
       let order = new Order(payload);
-      console.log(order);
     const result = await order.save();
     return NextResponse.json({ result: result, success: true });
   } catch (error) {

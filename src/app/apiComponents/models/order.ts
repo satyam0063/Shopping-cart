@@ -13,8 +13,6 @@ const productModel = new mongoose.Schema({
   images: Array,
   quantity: Number,
 });
-export const Product =
-  mongoose.models.products || mongoose.model("products", productModel);
 
 const orderModel = new mongoose.Schema({
   email: String,
