@@ -1,5 +1,5 @@
-/* eslint-disable react/jsx-no-undef */
 "use client";
+/* eslint-disable react/jsx-no-undef */
 import React from "react";
 
 import LeftSection from "@/app/components/Checkout/LeftSection";

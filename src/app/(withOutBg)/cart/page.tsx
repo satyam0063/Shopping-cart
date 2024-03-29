@@ -1,5 +1,5 @@
-/* eslint-disable react/jsx-no-undef */
 "use client";
+/* eslint-disable react/jsx-no-undef */
 import React, { useCallback, useMemo } from "react";
 import Image from "next/image";
 import { UseAppSelector } from "@/redux/store";
