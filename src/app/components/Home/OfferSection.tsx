@@ -3,7 +3,6 @@ import CommonButtons from "../UI/CommonButtons";
 import Image from "next/image";
 
 const OfferSection = () => {
-  console.log('OfferSection');
   return (
     <>
       <div className="bg-[#f5f5f5] bg-[url('/static/images/home/pattern-free-img.png')] bg-repeat bg-center relative">
