@@ -4,7 +4,7 @@ import Image from "next/image";
 import Header from "../components/UI/Header";
 import SliderText from "../components/UI/SliderText";
 import Footer from "../components/UI/Footer";
-import { usePathname } from "next/navigation";
+// import { usePathname } from "next/navigation";
 
 const images = [
   "/static/images/home/home-slider1.jpg",
