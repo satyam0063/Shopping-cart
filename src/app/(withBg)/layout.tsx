@@ -18,7 +18,7 @@ const WithBglayout = ({
 }>) => {
   console.log('withBgLayout');
   const pathname = usePathname();
-  const isHome = pathname.includes("home");
+  const isHome = pathname?.includes("home");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
