@@ -1,4 +1,3 @@
-'use client'
 import React from "react";
 import CommonButtons from "../UI/CommonButtons";
 import Image from "next/image";
