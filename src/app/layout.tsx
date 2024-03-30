@@ -3,6 +3,7 @@ import { Inter, Roboto, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 import "./responsive.css";
 import { ReduxProvider } from "@/redux/provider";
+import { Analytics } from '@vercel/analytics/react';
 
 const inter = Inter({ subsets: ["latin"] });
 const roboto = Roboto({
