@@ -13,7 +13,7 @@ export async function GET() {
     dataWithsignedUrl = await Promise.all(
       data.map(async (item) => {
         const response = await axios.post(
-          "https://shopping-cart-pied-two.vercel.app/api/viewFile",
+          `${process.env.API_PATH}/api/viewFile`,
           item
         ); // it coverts all thumbnail urls to pre-signed urls
         item.thumbnail = response.data.url;
@@ -21,8 +21,8 @@ export async function GET() {
       })
     );
     return NextResponse.json({ result: dataWithsignedUrl,success:true });
-  } catch (error) {
-    data = [];
+  } catch(error) {
+    data = []; 
     return NextResponse.json({ success:false,message:error });
   }
 }
