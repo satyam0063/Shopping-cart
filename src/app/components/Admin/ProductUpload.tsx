@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 import { Formik, Form } from "formik";
 import axios from "axios";
+import { Bounce, ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductUpload = () => {
   const [filePath, setFilePath] = useState("");
@@ -68,25 +70,46 @@ const ProductUpload = () => {
         });
     }
   };
-  const onSubmit = (values: any) => {
+  const onSubmit = (values: any, { resetForm }: any) => {
     const params = { ...values, thumbnail: filePath };
     axios
       .post("/api/uploadProduct", params)
       .then((res: any) => {
-        console.log(res);
+        if (res.data.success) {
+          resetForm();
+          toast.success("Product uploaded successfully", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            transition: Bounce,
+          });
+        }
       })
       .catch((error: any) => {
-        console.log(error);
+        toast.error(error, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
       });
   };
   return (
     <>
+      <ToastContainer />
       <div className="flex justify-between items-baseline">
         <p className="font-barlow-condensed font-medium text-[28px]">
-          Customer Information
-        </p>
-        <p className="font-sans font-semibold text-[18px] ">
-          Already have an account? Log in
+          Add a new product
         </p>
       </div>
       <div>
@@ -107,7 +130,7 @@ const ProductUpload = () => {
             <Form>
               <section className="mt-6">
                 <h2 className="font-barlow-condensed font-medium text-[28px] mb-6">
-                  Billing Details
+                  Product Details
                 </h2>
                 <div className="flex mb-4">
                   <div className="w-full pr-1">
@@ -249,7 +272,7 @@ const ProductUpload = () => {
                 className="bg-[#54595f] text-[#fefefe] hover:bg-[#000] px-[20px] py-[10px] my-[5px] mt-4 text-[15px] font-sans font-medium rounded-md uppercase tracking-widest w-full"
                 disabled={fileLoad}
               >
-                Place Order
+                Upload
               </button>
             </Form>
           )}

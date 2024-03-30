@@ -12,17 +12,21 @@ const navArray = [
     urlName: "Shop",
     url: "/shop",
   },
-  {
-    urlName: "Lookbook",
-    url: "/lookbook",
-  },
+  // {
+  //   urlName: "Lookbook",
+  //   url: "/lookbook",
+  // },
   {
     urlName: "About Us",
     url: "/about-us",
   },
+  // {
+  //   urlName: "Contact Us",
+  //   url: "/contact-us",
+  // },
   {
-    urlName: "Contact Us",
-    url: "/contact-us",
+    urlName: "Admin",
+    url: "/admin",
   },
 ];
 const Navbar = (props: any) => {
