@@ -73,7 +73,8 @@ const FilterModal = () => {
                 }`}
                 onClick={() => handleSelectedCategory(cl)}
               >
-                {cl.replaceAll('-', ' ')}
+                {cl}
+                {console.log(cl)                }
               </button>
               {/* <div>(3)</div> */}
             </div>

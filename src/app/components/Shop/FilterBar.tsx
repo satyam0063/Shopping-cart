@@ -12,8 +12,8 @@ const FilterBar = () => {
         <div className="px-2 items-center sm:items-start">Showing 1–18 of 25 results</div>
       </div>
       <div className="w-full sm:w-1/2 flex flex-row-reverse">
-        <GridListToggleButton />
-        <FilterSortButton />
+        {/* <GridListToggleButton /> */}
+        {/* <FilterSortButton /> */}
       </div>
     </div>
   );

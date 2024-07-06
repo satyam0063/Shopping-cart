@@ -22,14 +22,15 @@ interface Product {
   title: string;
 }
 
-const Product = ({ params }: { params: { id: number } }) => {
+const Product = ({ params }: { params: { id: string } }) => {
   const [currentProduct, setCurrentProduct] = useState<null | Product>(null);
 
   useEffect(() => {
-    const getProductById = async (id: number) => {
+    const getProductById = async (id: string) => {
       try {
-        const result = await axios.get(`https://dummyjson.com/products/${id}`);
-        setCurrentProduct(result.data);
+        const result = await axios.get(`/api/uploadProduct?id=${id}`);
+        setCurrentProduct(result.data.result);
+        
       } catch (error: any) {
         throw new Error(error.message);
       }
@@ -57,8 +58,6 @@ const Product = ({ params }: { params: { id: number } }) => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  console.log(currentProduct);
 
   return (
     <>

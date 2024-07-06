@@ -10,7 +10,7 @@ interface Product {
   category: string;
   description: string;
   discountPercentage: number;
-  id: number;
+  _id: string;
   images: string[];
   price: number;
   rating: number;
@@ -30,7 +30,7 @@ const ProductCard = ({ product }:{product: Product}) => {
   return (
     <div
       className="flex flex-col  pb-[1.2em]"
-      onClick={() => router.push(`/shop/${product.id}`)}
+      onClick={() => router.push(`/shop/${product._id}`)}
     >
       <div className="group relative mb-[0.5em] hover:cursor-pointer">
         <span className="text-[#fff] bg-[#54595f] absolute top-0 right-0 left-auto rounded-full min-h-[3em] min-w-[3em] leading-[3em] text-center px-[2px] text-[0.8em] mt-[-0.5em] mr-[-0.5em]">

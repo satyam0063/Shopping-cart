@@ -45,7 +45,7 @@ const productSlice = createSlice({
     setAllProducts: (state: any, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
     },
-    setCategories: (state: any, action: PayloadAction<ProductState>) => {
+    setCategories: (state: any, action: PayloadAction<any>) => {
       state.categories = action.payload;
     },
     setSelectedCategory: (state: any, action: PayloadAction<string>) => {
